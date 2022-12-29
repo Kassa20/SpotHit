@@ -11,3 +11,4 @@ def user(request):
     return render(request, 'user.html', {
         'name': username
     })
+    
