@@ -8,7 +8,7 @@ def index(request):
 
 def user(request):
     username = request.GET['username']
-    return render(request, 'user.html', {
+    return render(request, "logistic/user.html", {
         'name': username
     })
     

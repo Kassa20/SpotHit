@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'logistic',
+    'predApp',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
