@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hit prediction</title>
+</head>
+<body>
+    <h1>Spotify Hit Prediction</h1>
+
+   {% comment %} <form action="result">
+        song: <input type="text" name="song" required>
+        <input type="submit">
+   </form> {% endcomment %}
+
+    <form method="POST" action="{% url 'main' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        
+        {% if val %}
+            Hit
+        {% else %}
+            Not a Hit
+        {% endif %}
+
+        <br>
+        <p>accuracy: {{ acc }}%</p>
+
+        <button type="submit">Submit</button>
+    </form>
+      
+    <datalist id="choices">
+        {% for choice in form.choices %}
+          <option value="{{ choice }}">
+        {% endfor %}
+    </datalist>
+      
+
+</body>
+</html>
+
+
+
+
+
+
