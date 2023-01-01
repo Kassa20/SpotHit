@@ -18,11 +18,16 @@
         {% csrf_token %}
         {{ form.as_p }}
         
+        {{ song }}
+        <br>
+        <br>
+
         {% if val %}
             Hit
         {% else %}
             Not a Hit
         {% endif %}
+    
 
         <br>
         <p>accuracy: {{ acc }}%</p>
