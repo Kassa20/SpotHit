@@ -11,7 +11,7 @@ model = load('./savedModels/model.joblib')
 
 class MyForm(forms.Form):
     choices = available_songs
-    select = forms.CharField(label='Select', 
+    select = forms.CharField(label='Select song', 
     widget=forms.TextInput(attrs={'list': 'choices'}))
 
 

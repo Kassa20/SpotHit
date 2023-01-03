@@ -1,10 +1,10 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hit prediction</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
 <body>
     <h1>Spotify Hit Prediction</h1>
@@ -17,29 +17,26 @@
     <form method="POST" action="{% url 'main' %}">
         {% csrf_token %}
         {{ form.as_p }}
-        
-        <br>
+    
 
-        {% if is_in %}
+        {% if is_in and val%}
             {{ song }}
             <br>
             <br>
+            <p>Hit</p>
+            <br>
+            <p>accuracy: {{ acc }}%</p>
+        {% elif is_in %}
+            <p> {{ song }} </p>
+            <p>Not a Hit</p>
+            <p>accuracy: {{ acc }}%</p>
+        {% elif song == '' %}
+
         {% else %}
-            {{ song }} not in the database
-        {% endif %}
- 
-        {% if val %}
-            Hit
-            <br>
-        {% else %}
-            <br>
-            <br>
-            Not a Hit
+            <p>{{ song }} not in the database</p>
         {% endif %}
     
-
         <br>
-        <p>accuracy: {{ acc }}%</p>
 
         <button type="submit">Submit</button>
     </form>
