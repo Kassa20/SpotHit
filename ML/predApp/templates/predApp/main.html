@@ -18,13 +18,22 @@
         {% csrf_token %}
         {{ form.as_p }}
         
-        {{ song }}
-        <br>
         <br>
 
+        {% if is_in %}
+            {{ song }}
+            <br>
+            <br>
+        {% else %}
+            {{ song }} not in the database
+        {% endif %}
+ 
         {% if val %}
             Hit
+            <br>
         {% else %}
+            <br>
+            <br>
             Not a Hit
         {% endif %}
     

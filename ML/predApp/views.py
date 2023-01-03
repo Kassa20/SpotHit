@@ -16,6 +16,10 @@ class MyForm(forms.Form):
 
 
 def main(request):
+    value = ''
+    is_in = ''
+    select = ''
+    accuracy = 0
     X_2 = data[['danceability','energy','key','loudness','mode','speechiness','acousticness','instrumentalness','liveness','valence','tempo']]
     y_2 = data[['Label']]
 
@@ -33,6 +37,8 @@ def main(request):
             select = form.cleaned_data['select']
             hit_songs = music_data.loc[music_data['hit_prediction'] == 1]
             value = select in hit_songs['track_name'].values
+            is_in = select in available_songs
+
     else:
         form = MyForm()
         
@@ -40,7 +46,8 @@ def main(request):
         'form': form,
         'acc': accuracy,
         'val': value,
-        'song': select
+        'song': select,
+        'is_in': is_in
         })
 
 def formInfo(request):
