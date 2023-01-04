@@ -1,3 +1,35 @@
+
+.about {
+    display: inline-block;
+    position: absolute;
+    right: 80px;
+    top: 50px;
+    color: black;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+}
+
+.about::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: black;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.about:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+
+
 h1 {
     color: green;
     font-family: Arial, Helvetica, sans-serif;

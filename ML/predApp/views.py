@@ -53,10 +53,9 @@ def main(request):
         'is_in_database': is_in_database
         })
 
-def formInfo(request):
+def about(request):
 
-    return render(request, "predApp/result.html", {
-        
+    return render(request, "predApp/about.html", {
     })
 
 

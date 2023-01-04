@@ -6,10 +6,21 @@
     <title>Spotify Hit prediction</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 </head>
-<body>
-    <h1>Welcome to Spotify Hit Prediction</h1>
 
+<style>
+    .bg-image {
+        background-image: url('/static/images/a.jpg');
+    }
+</style>
+
+<body class="bg-image">
+    <h1>Spotify Hit Prediction</h1>
+
+    <h4>
+        <a href="{% url 'about' %}" class="about">About</a>
+    </h4>
  
+
     <form method="POST" action="{% url 'main' %}" >
         {% csrf_token %}
         {{ form.as_p }}
@@ -23,12 +34,12 @@
             <p>Not a Hit</p>
             <p>Accuracy: {{ acc }}%</p>
         {% elif song == ''%}
-            
+            <br>
         {% else %}
             <p>{{ song }} not in the database</p>
         {% endif %}
 
-        <button type="submit">Submit</button>
+        <button type="submit">Predict</button>
     </form>
       
     <datalist id="choices">
