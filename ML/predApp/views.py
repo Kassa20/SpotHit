@@ -11,15 +11,17 @@ model = load('./savedModels/model.joblib')
 
 class MyForm(forms.Form):
     choices = available_songs
-    select = forms.CharField(label='Select song', 
-    widget=forms.TextInput(attrs={'list': 'choices'}))
+    select = forms.CharField(label='Select a song', 
+    widget=forms.TextInput(attrs={'list': 'choices',
+    'placeholder': 'Search'}))
 
 
 def main(request):
-    value = ''
-    is_in = ''
+    is_in_database = ''
+    is_hit = ''
     select = ''
     accuracy = 0
+
     X_2 = data[['danceability','energy','key','loudness','mode','speechiness','acousticness','instrumentalness','liveness','valence','tempo']]
     y_2 = data[['Label']]
 
@@ -36,18 +38,19 @@ def main(request):
         if form.is_valid():
             select = form.cleaned_data['select']
             hit_songs = music_data.loc[music_data['hit_prediction'] == 1]
-            value = select in hit_songs['track_name'].values
-            is_in = select in available_songs
+            is_hit = select in hit_songs['track_name'].values
+            is_in_database = select in available_songs
 
+            form = MyForm()
     else:
         form = MyForm()
         
     return render(request, "predApp/main.html", {
         'form': form,
         'acc': accuracy,
-        'val': value,
+        'is_hit': is_hit,
         'song': select,
-        'is_in': is_in
+        'is_in_database': is_in_database
         })
 
 def formInfo(request):

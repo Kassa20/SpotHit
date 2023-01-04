@@ -1,0 +1,44 @@
+h1 {
+    color: green;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    transform: translateY(420%);
+    position: relative;
+}
+
+p {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+form {
+    text-align: center;
+    margin: 0 auto;
+    padding: 8px 14px;
+    transform: translateY(100%);
+    position: relative;
+}
+
+input {
+    width: 200px;
+    margin: 0 auto;
+    font-family: 'Railway', sans-serif;
+    padding: 8px 14px;
+    position: relative;
+}
+
+button {
+    width: 120px;
+    height: 40px;
+    border: none;
+    outline: none;
+    background: #2f2f2f;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 40px;
+    text-align: center;
+    box-shadow: 0 6px 20px -5px rgba(0,0,0,0.4);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+

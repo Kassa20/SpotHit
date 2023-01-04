@@ -3,40 +3,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Hit prediction</title>
-    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <title>Spotify Hit prediction</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <h1>Spotify Hit Prediction</h1>
+    <h1>Welcome to Spotify Hit Prediction</h1>
 
-   {% comment %} <form action="result">
-        song: <input type="text" name="song" required>
-        <input type="submit">
-   </form> {% endcomment %}
-
-    <form method="POST" action="{% url 'main' %}">
+ 
+    <form method="POST" action="{% url 'main' %}" >
         {% csrf_token %}
         {{ form.as_p }}
     
-
-        {% if is_in and val%}
-            {{ song }}
-            <br>
-            <br>
+        {% if is_in_database and is_hit %}
+           <p> {{ song }} </p>
             <p>Hit</p>
-            <br>
-            <p>accuracy: {{ acc }}%</p>
-        {% elif is_in %}
+            <p>Accuracy: {{ acc }}%</p>
+        {% elif is_in_database or is_hit %}
             <p> {{ song }} </p>
             <p>Not a Hit</p>
-            <p>accuracy: {{ acc }}%</p>
-        {% elif song == '' %}
-
+            <p>Accuracy: {{ acc }}%</p>
+        {% elif song == ''%}
+            
         {% else %}
             <p>{{ song }} not in the database</p>
         {% endif %}
-    
-        <br>
 
         <button type="submit">Submit</button>
     </form>
