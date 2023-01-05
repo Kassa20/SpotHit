@@ -20,7 +20,6 @@
         <a href="{% url 'about' %}" class="about">About</a>
     </h4>
  
-
     <form method="POST" action="{% url 'main' %}" >
         {% csrf_token %}
         {{ form.as_p }}
@@ -47,7 +46,6 @@
           <option value="{{ choice }}">
         {% endfor %}
     </datalist>
-      
 
 </body>
 </html>

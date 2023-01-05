@@ -66,6 +66,9 @@ music_data_path = './data_with_most_lyrics.csv'
 music_data = pd.read_csv(music_data_path)
 music_data = music_data.drop(columns=['Unnamed: 0', 'Unnamed: 0.1', 'Unnamed: 0.2'])
 music_data['lyrics'] = music_data['lyrics'].str.replace('\n', ' ')
+
+
+
 available_songs = music_data["track_name"] 
 available_songs = available_songs.tolist()
 

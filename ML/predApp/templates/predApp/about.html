@@ -1,12 +1,100 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>About</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/about.css' %}">
 </head>
-<body>
-    <h2>Works</h2>
+
+<style>
+    .basic {
+        overflow: auto;
+        background-image: url('/static/images/a.jpg');
+    }
+
+</style>
+
+<body class="basic" class="bg-image">
+
+    <h1 class="heading">About</h1>
+
+    <p class="info">The data required to train the Logistic regression model was taken from a large CSV file from spotify. 
+        The data was split</p> 
+    <p class="info">between test and train data according to common practice.</p> 
+
+    <button onclick="toggleMainData()" class="mainButton">Load Database</button> 
+
+    <table id="mainData-table" class="mainTable" style="display: none;">
+        <thead>
+            <tr>
+              {% for col in main_data.columns %}
+                <th>{{ col }}</th>
+              {% endfor %}
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in main_data.itertuples %}
+              <tr>
+                {% for val in row %}
+                  <td>{{ val }}</td>
+                {% endfor %}
+              </tr>
+            {% endfor %}
+          </tbody>
+    </table>
+
+    <button onclick="toggleTable()" class="button">Load features</button>
+
+    <table id="data-table" style="display: none;">
+        <thead>
+          <tr>
+            {% for col in features.columns %}
+              <th>{{ col }}</th>
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in features.itertuples %}
+            <tr>
+              {% for val in row %}
+                <td>{{ val }}</td>
+              {% endfor %}
+            </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+
+
+    <script>
+        function toggleMainData() {
+            var table = document.getElementById('mainData-table');
+            if (table.style.display == 'none') {
+                table.style.display = 'block';
+            } else {
+                table.style.display = 'none';
+            }
+        }
+    </script>
+
+    <script>
+        function toggleTable() {
+            var table = document.getElementById('data-table');
+            if (table.style.display == 'none') {
+                table.style.display = 'block';
+            } else {
+                table.style.display = 'none';
+            }
+        }
+    </script>
+
+
+
+
+
+
+
 </body>
 </html>
+
+

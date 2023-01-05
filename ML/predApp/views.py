@@ -55,8 +55,14 @@ def main(request):
 
 def about(request):
 
+    coef = lr.coef_
+    features = pd.DataFrame(list(zip(X, coef[0])), columns=['feature', 'coef'])
+    main_data = music_data[['artist_name', 'track_name', 'danceability','energy','key','loudness','mode','speechiness','acousticness','instrumentalness','liveness','valence','tempo']].head().reset_index(drop=True)
     return render(request, "predApp/about.html", {
+        'features': features,
+        'main_data': main_data
     })
+
 
 
 
