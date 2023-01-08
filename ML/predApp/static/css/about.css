@@ -1,9 +1,11 @@
 
+
 .heading {
    font-family: Arial, Helvetica, sans-serif;
    text-align: center;
-   transform: translateY(150%);
+   transform: translate(-30%, 100%);
    position: relative;
+   color: black;
 }
 
 .info {
@@ -13,16 +15,44 @@
     text-indent: 50px;
 }
 
+.under {
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+    transform: translate(20%, 700%);
+    text-indent: 50px;
+}
+
+
 .mainButton {
     font-family: Arial, Helvetica, sans-serif;
     position: relative;
     transform: translate(290%, 400%);
 }
 
+
+.featuresButton {
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+    transform: translate(200%, 2000%);
+}
+
+
 .mainTable {
     font-family: Arial, Helvetica, sans-serif;
     position: relative;
     transform: translate(20%, 40%);
+}
+
+.featuresTable {
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+    transform: translate(20%, 50%);
+}
+
+.list {
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+    transform: translate(30%, 100%);
 }
 
 td, th {
@@ -34,3 +64,45 @@ td, th {
 tr:nth-child(even) {
     background-color: #dddddd;
   }
+
+
+
+.home {
+    display: inline-block;
+    position: absolute;
+    right: 80px;
+    top: 50px;
+    color: black;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+}
+
+.home::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: black;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.home:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+
+.hr {
+    position: relative;
+    transform: translateY(130px);
+}
+
+
+
+
+

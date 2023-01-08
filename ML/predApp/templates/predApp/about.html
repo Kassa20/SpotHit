@@ -4,94 +4,121 @@
 <html lang="en">
 <head>
     <title>About</title>
+    <hr class="hr">
     <link rel="stylesheet" type="text/css" href="{% static 'css/about.css' %}">
 </head>
 
 <style>
-    .basic {
+    body {
+        background-image: url('/static/images/B.jpg');;
+        background-size: cover;
         overflow: auto;
-        background-image: url('/static/images/a.jpg');
     }
 
 </style>
 
-<body class="basic" class="bg-image">
+<body>
 
-    <h1 class="heading">About</h1>
-
-    <p class="info">The data required to train the Logistic regression model was taken from a large CSV file from spotify. 
-        The data was split</p> 
-    <p class="info">between test and train data according to common practice.</p> 
-
-    <button onclick="toggleMainData()" class="mainButton">Load Database</button> 
-
-    <table id="mainData-table" class="mainTable" style="display: none;">
-        <thead>
-            <tr>
-              {% for col in main_data.columns %}
-                <th>{{ col }}</th>
-              {% endfor %}
-            </tr>
-          </thead>
-          <tbody>
-            {% for row in main_data.itertuples %}
+    <div>
+        <h4>
+            <a href="/" class="home">Home</a>
+        </h4>
+    
+    
+        <h1 class="heading">About</h1>
+    
+        
+        <p class="info">The data required to train the Logistic regression model was taken from a large CSV file from spotify. 
+            The data was split</p> 
+        <p class="info">between test and train data according to common practice.</p> 
+    
+        <button onclick="toggleMainData()" class="mainButton">Load Database</button> 
+    
+        <table id="mainData-table" class="mainTable" style="display: none;">
+            <thead>
+                <tr>
+                    <th></th>
+                  {% for col in main_data.columns %}
+                    <th>{{ col }}</th>
+                  {% endfor %}
+                </tr>
+              </thead>
+              <tbody>
+                {% for row in main_data.itertuples %}
+                  <tr>
+                    {% for val in row %}
+                      <td>{{ val }}</td>
+                    {% endfor %}
+                  </tr>
+                {% endfor %}
+              </tbody>
+        </table>
+    
+        <button onclick="toggleTable()" class="featuresButton">Load features</button>
+    
+    
+        <p class="under">The model is trained to predict based on danceability, energy, and the other features listed above.</p>
+    
+        <p class="under">Each feature has a magnitude. To make the model more accurate, its better to use features with a higher magnitude.</p>
+    
+        
+        <ol class="list">
+            <li>Danceability - Strength and regularity of the beat</li>
+            <li>Energy - How fast and noisy the song sounds</li>
+            <li>speechiness - How much spoken words are in a track</li>
+            <li>acousticness - Likelyhood that the song uses acoustic instruments</li>
+            <li>instrumentalness - Detects whether a track contains no vocals</li>
+            <li>liveness - Detects whether the track was performed live</li>
+            <li>valence - How cheerful the song sounds</li>
+        </ol>
+    
+    
+    
+        <table id="data-table"  class="featuresTable"  style="display: none;">
+            <thead>
               <tr>
-                {% for val in row %}
-                  <td>{{ val }}</td>
+                <th></th>
+                {% for col in features.columns %}
+                  <th>{{ col }}</th>
                 {% endfor %}
               </tr>
-            {% endfor %}
-          </tbody>
-    </table>
-
-    <button onclick="toggleTable()" class="button">Load features</button>
-
-    <table id="data-table" style="display: none;">
-        <thead>
-          <tr>
-            {% for col in features.columns %}
-              <th>{{ col }}</th>
-            {% endfor %}
-          </tr>
-        </thead>
-        <tbody>
-          {% for row in features.itertuples %}
-            <tr>
-              {% for val in row %}
-                <td>{{ val }}</td>
+            </thead>
+            <tbody>
+              {% for row in features.itertuples %}
+                <tr>
+                  {% for val in row %}
+                    <td>{{ val }}</td>
+                  {% endfor %}
+                </tr>
               {% endfor %}
-            </tr>
-          {% endfor %}
-        </tbody>
-    </table>
-
-
-    <script>
-        function toggleMainData() {
-            var table = document.getElementById('mainData-table');
-            if (table.style.display == 'none') {
-                table.style.display = 'block';
-            } else {
-                table.style.display = 'none';
+            </tbody>
+        </table>
+        
+    
+        <script>
+            function toggleMainData() {
+                var table = document.getElementById('mainData-table');
+                if (table.style.display == 'none') {
+                    table.style.display = 'block';
+                } else {
+                    table.style.display = 'none';
+                }
             }
-        }
-    </script>
-
-    <script>
-        function toggleTable() {
-            var table = document.getElementById('data-table');
-            if (table.style.display == 'none') {
-                table.style.display = 'block';
-            } else {
-                table.style.display = 'none';
+        </script>
+    
+        <script>
+            function toggleTable() {
+                var table = document.getElementById('data-table');
+                if (table.style.display == 'none') {
+                    table.style.display = 'block';
+                } else {
+                    table.style.display = 'none';
+                }
             }
-        }
-    </script>
-
-
-
-
-
+        </script>
+    
+    
+    </div>
 
 
 </body>
