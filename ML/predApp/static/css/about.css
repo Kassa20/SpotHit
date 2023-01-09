@@ -4,8 +4,12 @@
    font-family: Arial, Helvetica, sans-serif;
    text-align: center;
    transform: translate(-30%, 100%);
-   position: relative;
    color: black;
+   position: relative;
+   top: 0;  
+   left: 0;  
+   width: 100%; 
+   z-index: 10
 }
 
 .info {
@@ -26,14 +30,38 @@
 .mainButton {
     font-family: Arial, Helvetica, sans-serif;
     position: relative;
-    transform: translate(290%, 400%);
+    transform: translate(230%, 280%);
+    width: 130px;
+    height: 40px;
+    border: none;
+    outline: none;
+    background: #2f2f2f;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 40px;
+    box-shadow: 0 6px 20px -5px rgba(0,0,0,0.4);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
 }
 
 
 .featuresButton {
     font-family: Arial, Helvetica, sans-serif;
     position: relative;
-    transform: translate(200%, 2000%);
+    transform: translate(125%, 1080%);
+    width: 130px;
+    height: 40px;
+    border: none;
+    outline: none;
+    background: #2f2f2f;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 40px;
+    box-shadow: 0 6px 20px -5px rgba(0,0,0,0.4);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
 }
 
 
@@ -66,10 +94,9 @@ tr:nth-child(even) {
   }
 
 
-
 .home {
     display: inline-block;
-    position: absolute;
+    position: fixed;
     right: 80px;
     top: 50px;
     color: black;
